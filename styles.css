@@ -1,0 +1,121 @@
+/* =========================
+   BACKGROUND BERGERAK PELAN
+========================= */
+body {
+  background: linear-gradient(
+    -45deg,
+    #fff0f4,
+    #f8dfe7,
+    #fdeff4,
+    #f6ccd7
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 25s ease infinite;
+  color: #3b2f33;
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ORNAMEN MENGAMBANG */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(178,58,95,0.2), transparent 70%);
+  filter: blur(80px);
+  z-index: -1;
+  animation: floatSlow 18s ease-in-out infinite alternate;
+}
+
+body::before {
+  top: -160px;
+  left: -150px;
+}
+
+body::after {
+  bottom: -170px;
+  right: -160px;
+  animation-delay: 6s;
+}
+
+@keyframes floatSlow {
+  from { transform: translateY(0); }
+  to { transform: translateY(40px); }
+}
+
+/* =========================
+   JUDUL & TEKS
+========================= */
+h1, h2, h3 {
+  color: #b23a5f;
+  font-weight: 700;
+}
+
+/* =========================
+   CARD UTAMA
+========================= */
+.card-pink {
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 32px;
+  box-shadow: 0 18px 40px rgba(178, 58, 95, 0.15);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.9s ease forwards;
+}
+
+.card-pink:nth-child(1) { animation-delay: 0.2s; }
+.card-pink:nth-child(2) { animation-delay: 0.4s; }
+.card-pink:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-pink:hover {
+  transform: translateY(-6px);
+  transition: all 0.35s ease;
+}
+
+/* =========================
+   FOTO PROFIL
+========================= */
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #e6b4c2;
+  box-shadow: 0 10px 25px rgba(178, 58, 95, 0.2);
+  animation: zoomFade 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes zoomFade {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
